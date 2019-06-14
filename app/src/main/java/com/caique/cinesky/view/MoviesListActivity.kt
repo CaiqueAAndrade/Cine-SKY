@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.caique.cinesky.R
 import com.caique.cinesky.adapter.MoviesRecyclerViewAdapter
 import com.caique.cinesky.model.MoviesResponse
+import com.caique.cinesky.utils.Constants.Companion.ERROR_ANIMATION_SUZE
 import com.caique.cinesky.utils.Constants.Companion.MOVIE_PARCELABLE_KEY
 import com.caique.cinesky.viewmodel.MoviesListViewModel
 import kotlinx.android.synthetic.main.movies_list_activity.*
@@ -37,11 +38,24 @@ class MoviesListActivity : AppCompatActivity() {
     private fun getMoviesResponse() {
         moviesListViewModel.getMoviesListRepository().observe(this, Observer {
             if (it != null) {
-                loading.visibility = View.GONE
-                tv_list_description.visibility = View.VISIBLE
-                setRecyclerViewAdapter(it)
+                onSuccess(it)
+            } else {
+                onFailure()
             }
         })
+    }
+
+    private fun onSuccess(it: ArrayList<MoviesResponse>) {
+        loading.visibility = View.GONE
+        tv_list_description.visibility = View.VISIBLE
+        setRecyclerViewAdapter(it)
+    }
+
+    private fun onFailure() {
+        loading.layoutParams.width = ERROR_ANIMATION_SUZE
+        loading.layoutParams.height = ERROR_ANIMATION_SUZE
+        loading.setAnimation("404.json")
+        loading.playAnimation()
     }
 
     private fun setRecyclerViewAdapter(moviesList: ArrayList<MoviesResponse>) {
