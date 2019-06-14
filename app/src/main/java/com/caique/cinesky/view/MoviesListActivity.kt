@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
-import android.widget.Toast
 import com.caique.cinesky.R
 import com.caique.cinesky.adapter.MoviesRecyclerViewAdapter
 import com.caique.cinesky.model.MoviesResponse
-import com.caique.cinesky.utils.Constants.Companion.ERROR_ANIMATION_SUZE
+import com.caique.cinesky.utils.Constants.Companion.ERROR_ANIMATION_SIZE
+import com.caique.cinesky.utils.Constants.Companion.ERROR_JSON
 import com.caique.cinesky.utils.Constants.Companion.MOVIE_PARCELABLE_KEY
 import com.caique.cinesky.viewmodel.MoviesListViewModel
 import kotlinx.android.synthetic.main.movies_list_activity.*
@@ -52,9 +52,9 @@ class MoviesListActivity : AppCompatActivity() {
     }
 
     private fun onFailure() {
-        loading.layoutParams.width = ERROR_ANIMATION_SUZE
-        loading.layoutParams.height = ERROR_ANIMATION_SUZE
-        loading.setAnimation("404.json")
+        loading.layoutParams.width = ERROR_ANIMATION_SIZE
+        loading.layoutParams.height = ERROR_ANIMATION_SIZE
+        loading.setAnimation(ERROR_JSON)
         loading.playAnimation()
     }
 

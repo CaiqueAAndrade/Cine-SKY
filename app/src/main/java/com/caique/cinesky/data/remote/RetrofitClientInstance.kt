@@ -1,5 +1,6 @@
 package com.caique.cinesky.data.remote
 
+import com.caique.cinesky.utils.Constants.Companion.API_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -8,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitClientInstance {
 
     companion object {
-        private val BASE_URL : String = "https://sky-exercise.herokuapp.com/api/"
+        private const val BASE_URL : String = API_URL
         fun getRetrofitInstance() : CallApi{
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
