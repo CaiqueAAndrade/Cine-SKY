@@ -30,7 +30,7 @@ class MoviesRecyclerViewAdapter(val context: Context, val moviesList: ArrayList<
         val movie = moviesList[p1]
 
         p0.title.text = movie.title
-        if (movie.coverUrl.isNotEmpty()) Picasso.get().load(movie.coverUrl)
+        Picasso.get().load(movie.coverUrl)
             .error(R.drawable.no_poster).into(p0.image)
     }
 
