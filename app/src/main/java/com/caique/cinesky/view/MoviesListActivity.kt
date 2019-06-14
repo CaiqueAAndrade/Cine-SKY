@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.caique.cinesky.R
 import com.caique.cinesky.adapter.MoviesRecyclerViewAdapter
@@ -33,6 +34,8 @@ class MoviesListActivity : AppCompatActivity() {
     private fun getMoviesResponse() {
         moviesListViewModel.getMoviesListRepository().observe(this, Observer {
             if (it != null) {
+                loading.visibility = View.GONE
+                tv_list_description.visibility = View.VISIBLE
                 setRecyclerViewAdapter(it)
             }
         })
