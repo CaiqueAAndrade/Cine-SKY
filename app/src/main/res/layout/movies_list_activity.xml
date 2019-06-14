@@ -6,30 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:background="@android:color/black">
 
-    <LinearLayout
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:background="@android:color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-                android:id="@+id/bt_back"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_arrow_back_white_24dp"
-                android:background="@android:color/black"/>
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="60sp"
-                  android:paddingTop="14dp"
-                  android:text="@string/app_name"
-                  android:textColor="@android:color/white"
-                  android:textSize="24sp"
-                  android:layout_marginStart="18dp"/>
-    </LinearLayout>
+    <include layout="@layout/toolbar"/>
 
     <TextView
             android:id="@+id/tv_list_description"

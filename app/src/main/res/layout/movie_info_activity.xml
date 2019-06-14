@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="movieinfo"
+                type="com.caique.cinesky.model.MoviesResponse"/>
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black">
+
+            <include layout="@layout/toolbar"/>
+
+            <android.support.constraint.ConstraintLayout
+                    android:id="@+id/contraint_movie_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <android.support.v7.widget.CardView
+                        android:id="@+id/card_image"
+                        android:layout_height="270dp"
+                        android:layout_width="176dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_margin="16dp"
+                        android:background="@android:color/black"
+                        app:layout_constraintTop_toTopOf="@id/contraint_movie_info"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                            android:id="@+id/cover_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:src="@drawable/imagem_teste"
+                            android:scaleType="centerCrop"/>
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                        android:id="@+id/release_year_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/release_year"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/card_image"
+                        app:layout_constraintStart_toStartOf="@id/card_image"
+                        app:layout_constraintEnd_toEndOf="@id/card_image"/>
+
+                <TextView
+                        android:id="@+id/release_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="italic"
+                        tools:text="2017"
+                        android:text="@{movieinfo.releaseYear}"
+                        app:layout_constraintTop_toBottomOf="@id/release_year_description"
+                        app:layout_constraintStart_toStartOf="@id/release_year_description"
+                        app:layout_constraintEnd_toEndOf="@id/release_year_description"/>
+
+                <TextView
+                        android:id="@+id/duration_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/duration"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/release_year"
+                        app:layout_constraintStart_toStartOf="@id/release_year_description"
+                        app:layout_constraintEnd_toEndOf="@id/release_year_description"/>
+
+                <TextView
+                        android:id="@+id/duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="italic"
+                        tools:text="1h 55m"
+                        android:text="@{movieinfo.duration}"
+                        app:layout_constraintTop_toBottomOf="@id/duration_description"
+                        app:layout_constraintStart_toStartOf="@id/duration_description"
+                        app:layout_constraintEnd_toEndOf="@id/duration_description"/>
+
+                <TextView
+                        android:id="@+id/movie_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        tools:text="Doutor Estranho"
+                        android:text="@{movieinfo.title}"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintTop_toTopOf="@id/card_image"
+                        app:layout_constraintStart_toEndOf="@id/card_image"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:id="@+id/movie_description"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textStyle="italic"
+                        android:text="@{movieinfo.overview}"
+                        tools:text="@string/movie_description_test"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@id/movie_title"
+                        app:layout_constraintEnd_toEndOf="@id/movie_title"
+                        app:layout_constraintTop_toBottomOf="@id/movie_title"/>
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/movie_backdrop_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contraint_movie_info"/>
+
+
+            <android.support.constraint.ConstraintLayout
+                    android:id="@+id/backdrop_image_expand"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:background="@color/transparent_black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                <android.support.v7.widget.CardView
+                        android:id="@+id/card_backdrop"
+                        android:layout_height="176dp"
+                        android:layout_width="270dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                            android:id="@+id/backdrop_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:src="@drawable/backdrop_teste"
+                            android:scaleType="centerCrop"/>
+                </android.support.v7.widget.CardView>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>
