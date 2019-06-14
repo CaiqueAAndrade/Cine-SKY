@@ -5,18 +5,18 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
         android:layout_margin="8dp"
         android:background="@android:color/black">
 
     <android.support.v7.widget.CardView
             android:id="@+id/card_image"
-            android:layout_height="290dp" android:layout_width="196dp"
+            android:layout_height="270dp"
+            android:layout_width="176dp"
             app:cardCornerRadius="5dp"
             android:background="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-
 
         <ImageView
                 android:id="@+id/cover_image"
@@ -25,16 +25,18 @@
                 tools:src="@drawable/imagem_teste"
                 android:scaleType="centerCrop"/>
 
+
     </android.support.v7.widget.CardView>
 
     <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="32dp"
             android:layout_marginTop="6dp"
             tools:text="Doutor Estranho"
             android:textColor="@android:color/white"
             android:textStyle="bold"
+            android:gravity="top"
             app:layout_constraintTop_toBottomOf="@id/card_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
