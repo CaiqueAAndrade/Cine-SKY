@@ -1,7 +1,6 @@
 package com.caique.cinesky
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.*
 import com.caique.cinesky.model.MoviesResponse
 import com.caique.cinesky.viewmodel.MoviesListViewModel
 import org.junit.Assert
@@ -21,7 +20,6 @@ class MoviesListViewModelTest {
     @Before
     fun setUp() {
         moviesListViewModel = mock(MoviesListViewModel::class.java)
-
     }
 
     fun setUpMovieList() : LiveData<ArrayList<MoviesResponse>> {
